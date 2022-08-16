@@ -1,8 +1,15 @@
 import Slide from 'react-reveal/Slide'; 
 import Image from 'next/image'
+import { useState } from 'react';
+import { FiX } from 'react-icons/fi'
+import Modal from '@mui/material/Modal'
 
 
 const Naduvnoy = () => {
+
+    const [open, setOpen] = useState(false)
+    const handleOpen = () => setOpen(true)
+    const handleClose = () => setOpen(false)
   
   const datas = [
     {
@@ -54,7 +61,7 @@ const Naduvnoy = () => {
 
       {/* <div className=" w-full h-screen   bg-center bg-no-repeat bg-cover bg-[url('../public/Assets/bgintex.png')]"></div> */}
 
-      <div className="w-full h-11 md:h-24 bg-green-main flex items-center justify-center " >
+      <div className="w-full h-11 md:h-24 bg-green-main flex items-center justify-center " id='naduv' >
         <h1 className="text-center text-2xl md:text-5xl font-bold text-white tracking-wide ">
         Надувной бассейн
         </h1>
@@ -63,9 +70,9 @@ const Naduvnoy = () => {
       {/* grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-10 content-start */}
 <div className="w-full px-10 xl:px-36 pt-8 md:pt-24" >
       <div className="container mx-auto flex md:flex-row flex-col items-center justify-between gap-10 flex-wrap" >
-        <Slide bottom>
             {datas?.map((data) => (
               <div key={data.id}>
+              <Slide bottom>
                 <div className="w-resCardWidth h-resCardHeight sm:w-cardWidth sm:h-cardHeight bg-white rounded-cardRadius shadow-cardShadow p-4 flex items-center flex-wrap flex-col" >
                     <h2 className='text-xl sm:text-2xl font-semibold text-green-main mt-4 sm:mt-6' >Надувной</h2>
                     <img src={data.img} alt="photo" className='h-20 mt-3 sm:w-48 sm:h-28 '  />
@@ -76,12 +83,41 @@ const Naduvnoy = () => {
                             <h3 className='text-sm sm:text-xl font-bold '  >{data.salePrice} сум</h3>
                         </div>
 
-                        <button className='bg-yellow-btn hover:bg-yellow-400 rounded-btnRadius w-24 sm:w-28 h-5 sm:h-6 font-bold text-xs sm:text-base shadow-md' >Заказать</button>
+                        <button onClick={handleOpen} className='bg-yellow-btn hover:bg-yellow-400 rounded-btnRadius w-24 sm:w-28 h-5 sm:h-6 font-bold text-xs sm:text-base shadow-md ' >Заказать</button>
+
+                        {/* Modal */}
+
+                        <Modal
+                            open={open}
+                            onClose={handleClose}
+                            aria-labelledby="modal-modal-title"
+                            aria-describedby="modal-modal-description"
+                            className="flex items-center justify-center "
+                        >
+                            <div className='relative bg-white w-resModalWidth h-resModalHeight md:w-itemModalWidth md:h-modalHeight rounded-modalRadius shadow-cardShadow px-9 flex flex-col md:flex-row md:gap-12 justify-start items-center pt-9' >
+                            <FiX className='absolute w-6 h-6 md:w-10 md:h-10 text-gray-400 right-7 top-4 hover:text-gray-500 ' onClick={handleClose} />
+                                <div className='w-60 h-40 md:w-itemCardWidth md:h-itemCardHeight rounded-cardRadius shadow-cardShadow' ></div>
+                                <p className='pt-7 font-bold md:absolute bottom-28 left-1/4 md:text-xl' >1.390.000 сум</p>
+                                <div>
+                                    <form action="/send-data-here" method="post" className="flex flex-col items-center gap-4 pt-2 md:mt-6 " >
+                                                
+                                                <input className=" w-64 h-12 md:w-80 md:h-14 rounded-2xl p-4 outline-none shadow-cardShadow"  type="text" placeholder="Ваше имя" />
+                                                
+                                                <input className="w-64 h-12 md:w-80 md:h-14 rounded-2xl p-4 outline-none shadow-cardShadow" type="tel" placeholder="Ваш номер" />
+                                                
+                                                <input className=" w-64 h-12 md:w-80 md:h-14 rounded-2xl p-4 outline-none shadow-cardShadow"  type="text" placeholder="Ваш адрес" />
+
+                                                <button className=" w-44 h-9 md:w-60 md:h-12 md:mt-8 bg-yellow-btn rounded-2xl text-lg font-semibold shadow-cardShadow"  type="submit">Заказать</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </Modal>
                     </div>
                 </div>
+              </Slide>
               </div>
             ))}
-        </Slide>
       </div>
       
 </div>
