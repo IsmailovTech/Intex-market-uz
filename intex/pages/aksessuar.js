@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { FiX } from 'react-icons/fi'
+import Modal from '@mui/material/Modal'
 import Image from 'next/image'
 
 import Slide from 'react-reveal/Slide'; 
-import Modal from '@mui/material/Modal'
 
 const Aksessuar = () => {
     
@@ -35,7 +35,7 @@ const Aksessuar = () => {
     return (
         <>
 
-            <div className="w-full h-11 md:h-24 bg-green-main flex items-center justify-center mt-8 md:mt-24" >
+            <div className="w-full h-11 md:h-24 bg-green-main flex items-center justify-center mt-8 md:mt-24" id='aksessuar' >
                         <h1 className="text-center text-2xl md:text-5xl font-bold text-white tracking-wide ">
                         Аксессуары
                         </h1>
@@ -65,13 +65,14 @@ const Aksessuar = () => {
                                         aria-describedby="modal-modal-description"
                                         className="flex items-center justify-center "
                                     >
-                                        <div className='relative bg-white w-resModalWidth h-itemModalHeight md:w-itemModalWidth md:h-modalHeight rounded-modalRadius shadow-cardShadow px-9 flex flex-col md:flex-row md:gap-12 justify-start items-center' >
-                                        <FiX className='absolute w-10 h-10 text-gray-400 right-7 top-4 hover:text-gray-500 ' onClick={handleClose} />
-                                            <div className='w-60 h-40    md:w-itemCardWidth md:h-itemCardHeight rounded-cardRadius shadow-cardShadow' >
-                                               
+                                        <div className='relative bg-white w-resModalWidth h-resModalHeight md:w-itemModalWidth md:h-modalHeight rounded-modalRadius shadow-cardShadow px-9 flex flex-col md:flex-row md:gap-12 justify-start items-center pt-9' >
+                                        <FiX className='absolute w-6 h-6 md:w-10 md:h-10 text-gray-400 right-7 top-4 hover:text-gray-500 ' onClick={handleClose} />
+                                            <div className='w-60 h-40 md:w-itemCardWidth md:h-itemCardHeight rounded-cardRadius shadow-cardShadow' >
                                             </div>
+ 
+                                            <p className='pt-7 font-bold md:absolute bottom-28 left-1/4 md:text-xl' >1.390.000 сум</p>
                                             <div>
-                                                <form action="/send-data-here" method="post" className="flex flex-col items-center gap-5 pt-2 mt-5 md:mt-6 " >
+                                                <form action="/send-data-here" method="post" className="flex flex-col items-center gap-4 pt-2 md:mt-6 " >
                                                             
                                                             <input className=" w-64 h-12 md:w-80 md:h-14 rounded-2xl p-4 outline-none shadow-cardShadow"  type="text" placeholder="Ваше имя" />
                                                             

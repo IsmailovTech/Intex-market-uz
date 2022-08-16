@@ -32,7 +32,7 @@ module.exports = {
         cardHeight:"284px",
         resCardHeight:"250px",
         modalHeight: "584px",
-        resModalHeight:"436px",
+        resModalHeight:"510px",
         itemModalHeight:"584px",
         itemCardHeight:"505px",
       },
