@@ -1,6 +1,10 @@
 import Head from 'next/head'
+import Aksessuar from './aksessuar'
+import Footer from './footer'
+import Karkasniy from './karkasniy'
 import Header from './naduvnoy'
 import Navbar from './navbar'
+import Oformit from './oformit'
 
 export default function Home() {
   return (
@@ -14,7 +18,10 @@ export default function Home() {
       {/* Components */}
       <Navbar />
       <Header />
-      
+      <Karkasniy />
+      <Aksessuar />
+      <Oformit />
+      <Footer />
     </div>
   )
 }
